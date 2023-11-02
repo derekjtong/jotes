@@ -7,6 +7,7 @@ import { ModeToggle } from "../../../components/ModeToggle";
 import { useConvexAuth } from "convex/react";
 import { SignInButton, SignUpButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/Spinner";
 
 function Navbar() {
   const { isAuthenticated, isLoading } = useConvexAuth();
@@ -16,7 +17,7 @@ function Navbar() {
     <div className={cn("fixed top-0 z-50 flex w-full items-center bg-background p-6 dark:bg-[#1F1F1F]", scrolled && "border-b shadow-sm")}>
       <Logo />
       <div className="flex w-full items-center justify-between gap-x-2 md:ml-auto md:justify-end">
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <Spinner />}
         {!isAuthenticated && !isLoading && (
           <>
             <SignInButton mode="modal">
